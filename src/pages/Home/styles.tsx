@@ -35,7 +35,17 @@ export const FloatButton = styled.TouchableOpacity`
     border-radius: 35px;
 `
 
-export const Add= styled.Text`
+export const Add = styled.Text`
     font-size: 24px;
     color: #fff;
+`
+
+export const CenterContainer = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+`
+
+export const ScrollContainer = styled.ScrollView`
+    flex: 1;
 `

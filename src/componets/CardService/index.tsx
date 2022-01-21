@@ -1,19 +1,22 @@
 //Styles
 import * as S from './styles'
+import { Service } from '../../@types/index';
 
-const CardService = () => {
-    return(
-        <S.Wrapper>
+import { useNavigation } from '@react-navigation/native';
+
+const CardService = ({ id, title, description, customer }: Service) => {
+    const navigation: any = useNavigation();
+
+    return (
+        <S.Wrapper onPress={() => navigation.navigate('Item', { id, title, description, customer })}>
             <S.Container>
                 <S.Info>
-                    <S.Title>Computador não liga</S.Title>
-                    <S.Client>Filipe Zaidan</S.Client>
-                    <S.Date>Criado em 21/01/2022 às 02:05</S.Date>
+                    <S.Title>{ title }</S.Title>
+                    <S.Client>{ customer }</S.Client>
                 </S.Info>
                 <S.Status>
-                    <S.Title>#1</S.Title>
+                    <S.Title>#{ id }</S.Title>
                     {/* Add Image: Status Check */}
-                    {/* <S.Title>#1</S.Title> */}
                 </S.Status>
             </S.Container>
         </S.Wrapper>
