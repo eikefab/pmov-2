@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export const Wrapper = styled.SafeAreaView`
     flex: 1;
-    padding-top: 60;
+    padding-top: 60px;
     /* background-color: red; */
     align-items: center;
 `
@@ -19,7 +19,7 @@ export const Title = styled.Text`
     margin-bottom: 45px;
 `
 export const List = styled.FlatList`
-    font-size: 24;
+    font-size: 24px;
     text-align: left;
     font-weight: bold;
 `

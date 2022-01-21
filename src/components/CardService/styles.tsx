@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export const Wrapper = styled.TouchableOpacity`
     width: 100%;
-    height: 23%;
+    height: 130px;
     background: #E5E5E5;
     border-radius: 5px;
     padding: 20px;
@@ -24,7 +24,7 @@ export const Status = styled.View`
     justify-content: space-between;
 `
 export const Title = styled.Text`
-    font-size: 16;
+    font-size: 16px;
     text-align: left;
     font-weight: bold;
 `

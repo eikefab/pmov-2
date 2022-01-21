@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Wrapper = styled.SafeAreaView`
     flex: 1;
-    padding-top: 60;
+    padding-top: 60px;
     align-items: center;
 `
 export const Container = styled.View`
@@ -22,12 +22,12 @@ export const Input = styled.TextInput`
     font-size: 15px;
     padding: 10px;
     background-color: #E5E5E5
-    margin-bottom: 10%;
+    margin-bottom: 30px;
 `
 export const Button = styled.TouchableOpacity`
     width: 100%;
     height: 60px;
-    margin-top: 80%;
+    margin-top: 15%;
     border-radius: 5px;
     align-items: center;
     justify-content: center
