@@ -4,7 +4,7 @@ import { Service } from '../../@types/index';
 
 import { useNavigation } from '@react-navigation/native';
 
-const CardService = ({ id, title, description, customer }: Service) => {
+const CardService = ({ id, title, description, customer, state }: Service) => {
     const navigation: any = useNavigation();
 
     return (
