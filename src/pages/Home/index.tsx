@@ -47,8 +47,8 @@ export default ({ navigation }: any) => {
 
 }
 
-const ServiceItem = ({ id, title, description, costumer, state, navigation }: Service & { navigation: any }) => (
-    <TouchableOpacity onPress={() => navigation.navigate("Item", { id })}>
+const ServiceItem = ({ id, title, description, customer, state, navigation }: Service & { navigation: any }) => (
+    <TouchableOpacity onPress={() => navigation.navigate("Item", { id, title, description, customer })}>
         <Text>{ title }</Text>
     </TouchableOpacity>
 );
