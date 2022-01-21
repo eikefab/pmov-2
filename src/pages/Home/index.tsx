@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //Componets
-import CardService from "../../componets/CardService";
+import CardService from "../../components/CardService";
 import { ActivityIndicator } from "react-native";
 
 //Styles
