@@ -1,58 +1,43 @@
+//Libraries
 import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
-import joi from "joi";
 
-import api from "../../api";
+//Styles
+import * as S from './styles';
 
-const validator = joi.object({
-
-    title: joi.string(),
-    description: joi.string(),
-    customer: joi.string(),
-
-});
-
-export default ({ navigation }: any) => {
-
+const Create = () => {
+    //States
     const [title, setTitle] = useState<string>();
     const [description, setDescription] = useState<string>();
     const [customer, setCustomer] = useState<string>();
 
-    async function submit() {
-        const { error, value } = validator.validate({ title, description, customer });
-
-        // ou avisa o cara, sla
-        if (error) return;
-
-        await api.create(value.title, value.description, value.costumer);
-
-        navigation.navigate("Home");
-    }
 
     return (
-        <View style={{ flex: 1, }}>
-            <View>
-                <TextInput
-                    placeholder="Título"
+        <S.Wrapper>
+            <S.Container>
+                <S.Title>Criar novo serviço</S.Title>
+                <S.Input
+                    placeholder="Title*"
+                    onChangeText={(value) => setTitle(value)}
                     value={title}
-                    onChangeText={setTitle}
                 />
-
-                <TextInput
-                    placeholder="Descrição do problema"
+                <S.Input
+                    placeholder="Descrição*"
+                    onChangeText={(value) => setDescription(value)}
                     value={description}
-                    onChangeText={setDescription}
                 />
-                
-                <TextInput
-                    placeholder="Nome do cliente"
+                <S.Input
+                    placeholder="Cliente*"
+                    onChangeText={(value) => setCustomer(value)}
                     value={customer}
-                    onChangeText={setCustomer}
                 />
-            </View>
 
-            <Button onPress={submit} title="Criar" />
-        </View>
+                <S.Button>
+                    <S.TextButton>Criar</S.TextButton>
+                </S.Button>                
+            </S.Container>
+        </S.Wrapper>
     );
 
 }
+
+export default Create;

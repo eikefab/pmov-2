@@ -1,54 +1,41 @@
+//Libraries
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from "react-native";
-import { Service } from "../../@types";
+import { useNavigation } from "@react-navigation/native";
 
-import api from "../../api";
+//Componets
+import CardService from "../../componets/CardService";
 
-export default ({ navigation }: any) => {
+//Styles
+import * as S from './styles'
 
-    const [data, setData] = useState<Array<Service>>();
+const Home = () => {
+    const navigation = useNavigation();
+    const [services,setState] = useState();
 
-    async function retrieve() {
-        const record = await api.index();
-
-        return setData(record);
-    }
-
+    //Get services from api
     useEffect(() => {
-        retrieve();
+        //Request...
+    },[])
 
-        navigation.addListener("focus", async () => await retrieve());
-    });
-
-    function render() {
-        if (!data) return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-                <ActivityIndicator />
-            </View>
-        );
-
-        return (
-            <View style={{ flex: 1, }}>
-                <Text>Serviços</Text>
-                <ScrollView style={{ flex: 1, }}>
-                    {
-                        data.map((item) => {
-                            return <ServiceItem {...item } navigation={navigation} />
-                        })
-                    }
-                </ScrollView>
-
-                // Implementar float button ou um botão normal mesmo
-            </View>
-        );
+    const newService = () => {
+        navigation.navigate("Create");
     }
 
-    return render();
-
+    return (
+        <S.Wrapper>
+            <S.Container>
+                <S.Title>Serviços</S.Title>
+                    
+                <CardService />
+                <CardService />
+                <CardService />
+            </S.Container>
+            {/* Suggestion: Transform FloatButton in component */}
+            <S.FloatButton onPress={newService}>
+                <S.Add>+</S.Add>
+            </S.FloatButton>
+        </S.Wrapper>
+    );
 }
 
-const ServiceItem = ({ id, title, description, customer, state, navigation }: Service & { navigation: any }) => (
-    <TouchableOpacity onPress={() => navigation.navigate("Item", { id, title, description, customer })}>
-        <Text>{ title }</Text>
-    </TouchableOpacity>
-);
+export default Home;
