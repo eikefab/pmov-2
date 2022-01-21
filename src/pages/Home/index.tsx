@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from "react-native";
 import { Service } from "../../@types";
 
 import api from "../../api";
 
-export default () => {
+export default ({ navigation }: any) => {
 
     const [data, setData] = useState<Array<Service>>();
 
@@ -16,6 +16,8 @@ export default () => {
 
     useEffect(() => {
         retrieve();
+
+        navigation.addListener("focus", async () => await retrieve());
     });
 
     function render() {
@@ -31,10 +33,12 @@ export default () => {
                 <ScrollView style={{ flex: 1, }}>
                     {
                         data.map((item) => {
-                            return <ServiceItem {...item } />
+                            return <ServiceItem {...item } navigation={navigation} />
                         })
                     }
                 </ScrollView>
+
+                // Implementar float button ou um botão normal mesmo
             </View>
         );
     }
@@ -43,8 +47,8 @@ export default () => {
 
 }
 
-const ServiceItem = ({ id, title, description, costumer, state }: Service) => (
-    <View>
+const ServiceItem = ({ id, title, description, costumer, state, navigation }: Service & { navigation: any }) => (
+    <TouchableOpacity onPress={() => navigation.navigate("Item", { id })}>
         <Text>{ title }</Text>
-    </View>
+    </TouchableOpacity>
 );
